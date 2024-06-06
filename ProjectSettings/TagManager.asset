@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags: []
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - floor
+  - secfloor
+  - floorborder
+  - secfloorborder
+  - solidobjects
+  - interactable
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: background
+    uniqueID: 596951893
+    locked: 0
+  - name: foreground
+    uniqueID: 1188839863
+    locked: 0
+  - name: player
+    uniqueID: 447498959
+    locked: 0
+  - name: UI
+    uniqueID: 3236771939
+    locked: 0
