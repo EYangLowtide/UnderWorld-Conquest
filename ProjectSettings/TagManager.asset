@@ -17,8 +17,8 @@ TagManager:
   - secfloorborder
   - solidobjects
   - interactable
-  - 
-  - 
+  - terrain
+  - Enemy
   - 
   - 
   - 
@@ -46,6 +46,9 @@ TagManager:
     locked: 0
   - name: foreground
     uniqueID: 1188839863
+    locked: 0
+  - name: gameProps
+    uniqueID: 1939374525
     locked: 0
   - name: player
     uniqueID: 447498959
