@@ -24,7 +24,6 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = Vector2.MoveTowards(transform.position, player.transform.position, moveSpeed * Time.deltaTime);
         if (dazedTime <= 0)
         {
             moveSpeed = 2;
@@ -39,7 +38,6 @@ public class Enemy : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        transform.Translate(Vector2.left *  moveSpeed * Time.deltaTime);
     }
 
     public void TakeDamage(int damage)
