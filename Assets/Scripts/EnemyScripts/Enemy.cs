@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    Transform player;
     public int health;
     public float moveSpeed;
     public float dazedTime;
@@ -15,6 +16,7 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        player = FindObjectOfType<PlayerMovement>().transform;
         anim = GetComponent<Animator>();
         anim.SetBool("isRunning", true);
     }
@@ -22,9 +24,10 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        transform.position = Vector2.MoveTowards(transform.position, player.transform.position, moveSpeed * Time.deltaTime);
         if (dazedTime <= 0)
         {
-            moveSpeed = 5;
+            moveSpeed = 2;
         }
         else
         {

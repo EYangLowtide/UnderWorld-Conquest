@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5085655339717011407}
   - component: {fileID: 6737559071958511632}
   - component: {fileID: 4072094086407584767}
-  m_Layer: 12
+  m_Layer: 6
   m_Name: Terrian Chunk 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -151,7 +151,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4299059404470088735}
-  m_Layer: 12
+  m_Layer: 6
   m_Name: Left
   m_TagString: Untagged
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
@@ -182,7 +182,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7866399168016703514}
-  m_Layer: 12
+  m_Layer: 6
   m_Name: Right
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
@@ -213,7 +213,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3803495339543563251}
-  m_Layer: 12
+  m_Layer: 6
   m_Name: LeftDown
   m_TagString: Untagged
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
@@ -244,7 +244,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5527045337479014574}
-  m_Layer: 12
+  m_Layer: 6
   m_Name: LeftUp
   m_TagString: Untagged
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
@@ -275,7 +275,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8363387581141722912}
-  m_Layer: 12
+  m_Layer: 6
   m_Name: Up
   m_TagString: Untagged
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
@@ -308,7 +308,7 @@ GameObject:
   - component: {fileID: 499195833220070172}
   - component: {fileID: 4286364868784700960}
   - component: {fileID: 4062213487424658088}
-  m_Layer: 12
+  m_Layer: 6
   m_Name: Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -397,7 +397,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6356525312013870167}
-  m_Layer: 12
+  m_Layer: 6
   m_Name: RightDown
   m_TagString: Untagged
   m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
@@ -428,7 +428,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3516896884147874268}
-  m_Layer: 12
+  m_Layer: 6
   m_Name: Props
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -462,7 +462,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 476901307176912994}
-  m_Layer: 12
+  m_Layer: 6
   m_Name: Down
   m_TagString: Untagged
   m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
@@ -493,7 +493,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 112364280860924668}
-  m_Layer: 12
+  m_Layer: 6
   m_Name: RightUp
   m_TagString: Untagged
   m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
@@ -524,7 +524,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4609244432392932424}
-  m_Layer: 12
+  m_Layer: 6
   m_Name: prob location 1
   m_TagString: Untagged
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
@@ -555,7 +555,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5676694660007608993}
-  m_Layer: 12
+  m_Layer: 6
   m_Name: prob location 1 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
@@ -588,7 +588,7 @@ GameObject:
   - component: {fileID: 7241983570932022941}
   - component: {fileID: 6255054332091087606}
   - component: {fileID: 6548938739863725569}
-  m_Layer: 12
+  m_Layer: 6
   m_Name: terrain layer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3166,7 +3166,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2487914496462034185}
-  m_Layer: 12
+  m_Layer: 6
   m_Name: prob location 1 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
@@ -3199,7 +3199,7 @@ GameObject:
   - component: {fileID: 3940194860176402183}
   - component: {fileID: 7564844299430991094}
   - component: {fileID: 2720189649097318386}
-  m_Layer: 12
+  m_Layer: 6
   m_Name: terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -24,7 +24,7 @@ public class PlayerAttack : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Space))
             {
                 anim.SetTrigger("MeleeAttack");
-                Collider2D[] enemyToDamage = Physics2D.OverlapBoxAll(attackPos.position, new Vector2( attackRangeX, attackRangeY), 3, whatIsEnemy, 5);
+                Collider2D[] enemyToDamage = Physics2D.OverlapBoxAll(attackPos.position, new Vector2( attackRangeX, attackRangeY), 3, whatIsEnemy);
                 for (int i = 0; i < enemyToDamage.Length; i++)
                 {
                     enemyToDamage[i].GetComponent<Enemy>().TakeDamage(damage);

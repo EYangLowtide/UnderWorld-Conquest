@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5085655339717011407}
   - component: {fileID: 6737559071958511632}
   - component: {fileID: 4072094086407584767}
-  m_Layer: 12
+  m_Layer: 6
   m_Name: Terrian Chunk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -160,7 +160,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4725474163054659384}
-  m_Layer: 12
+  m_Layer: 6
   m_Name: prob location 3
   m_TagString: Untagged
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
@@ -193,7 +193,7 @@ GameObject:
   - component: {fileID: 1892174631729495742}
   - component: {fileID: 416006721393009698}
   - component: {fileID: 2285202747249307534}
-  m_Layer: 12
+  m_Layer: 6
   m_Name: Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -284,7 +284,7 @@ GameObject:
   - component: {fileID: 505191565348559391}
   - component: {fileID: 5186608189642988600}
   - component: {fileID: 4446906650021035138}
-  m_Layer: 12
+  m_Layer: 6
   m_Name: terrain layer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2862,7 +2862,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 724809189946035552}
-  m_Layer: 12
+  m_Layer: 6
   m_Name: prob location 4
   m_TagString: Untagged
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
@@ -2893,7 +2893,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 354488881122446922}
-  m_Layer: 12
+  m_Layer: 6
   m_Name: Up
   m_TagString: Untagged
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
@@ -2924,7 +2924,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3753280819535250744}
-  m_Layer: 12
+  m_Layer: 6
   m_Name: prob location 8
   m_TagString: Untagged
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
@@ -2955,7 +2955,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3291204389807307861}
-  m_Layer: 12
+  m_Layer: 6
   m_Name: Down
   m_TagString: Untagged
   m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
@@ -2986,7 +2986,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1697531568389643634}
-  m_Layer: 12
+  m_Layer: 6
   m_Name: prob location 7
   m_TagString: Untagged
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
@@ -3017,7 +3017,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6638902607176164796}
-  m_Layer: 12
+  m_Layer: 6
   m_Name: LeftDown
   m_TagString: Untagged
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
@@ -3048,7 +3048,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3516896884147874268}
-  m_Layer: 12
+  m_Layer: 6
   m_Name: Props
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3090,7 +3090,7 @@ GameObject:
   - component: {fileID: 8924639860477272128}
   - component: {fileID: 598122085599124294}
   - component: {fileID: 144723816269152683}
-  m_Layer: 12
+  m_Layer: 6
   m_Name: terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10523,7 +10523,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3409584833321337280}
-  m_Layer: 12
+  m_Layer: 6
   m_Name: prob location 9
   m_TagString: Untagged
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
@@ -10554,7 +10554,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9142411865316366998}
-  m_Layer: 12
+  m_Layer: 6
   m_Name: prob location 5
   m_TagString: Untagged
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
@@ -10585,7 +10585,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7547898242690287996}
-  m_Layer: 12
+  m_Layer: 6
   m_Name: Left
   m_TagString: Untagged
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
@@ -10616,7 +10616,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 729400904146668359}
-  m_Layer: 12
+  m_Layer: 6
   m_Name: RightDown
   m_TagString: Untagged
   m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
@@ -10647,7 +10647,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8835612202947226502}
-  m_Layer: 12
+  m_Layer: 6
   m_Name: Right
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
@@ -10678,7 +10678,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4609244432392932424}
-  m_Layer: 12
+  m_Layer: 6
   m_Name: prob location 1
   m_TagString: Untagged
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
@@ -10709,7 +10709,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3894924484002729899}
-  m_Layer: 12
+  m_Layer: 6
   m_Name: prob location 2
   m_TagString: Untagged
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
@@ -10740,7 +10740,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8858976117822908725}
-  m_Layer: 12
+  m_Layer: 6
   m_Name: prob location 6
   m_TagString: Untagged
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
@@ -10771,7 +10771,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8127126941433338300}
-  m_Layer: 12
+  m_Layer: 6
   m_Name: RightUp
   m_TagString: Untagged
   m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
@@ -10802,7 +10802,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7169502782570829584}
-  m_Layer: 12
+  m_Layer: 6
   m_Name: LeftUp
   m_TagString: Untagged
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}

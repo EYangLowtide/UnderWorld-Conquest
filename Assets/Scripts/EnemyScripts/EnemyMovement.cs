@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public EnemyScriptableObject enemyData;
+    Transform player;
+
+
     void Start()
     {
-        
+        player = FindObjectOfType<PlayerMovement>().transform;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        transform.position = Vector2.MoveTowards(transform.position, player.transform.position, enemyData.MoveSpeed * Time.deltaTime);    //Constantly move the enemy towards the player
     }
 }

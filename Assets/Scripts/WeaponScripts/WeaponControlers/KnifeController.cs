@@ -17,6 +17,6 @@ public class KnifeController : WeaponControler
         base.Attack();
         GameObject spawnedKnife = Instantiate(prefab);
         spawnedKnife.transform.position = transform.position; // knife start at the same pos as player 
-        spawnedKnife.GetComponent<KnifeBehavior>().DirectionChecker(pm.moveDir); //ref and set dir
+        spawnedKnife.GetComponent<KnifeBehavior>().DirectionChecker(pm.lastMovedVector); //ref and set dir
     }
 }
