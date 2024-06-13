@@ -14,7 +14,7 @@ public class HealthPotion : WeaponControler
     protected override void Update()
     {
         base.Attack();
-        GameObject spawnedHealth = Instantiate(prefab);
+        GameObject spawnedHealth = Instantiate(weaponData.Prefab);
         spawnedHealth.transform.position = transform.position; //assign same pos as this obj which is parented to player
         spawnedHealth.transform.parent = transform; //spawn below player
     }

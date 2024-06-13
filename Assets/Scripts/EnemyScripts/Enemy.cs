@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    public EnemyScriptableObject enemyData;
     Transform player;
     public int health;
     public float moveSpeed;
@@ -38,6 +39,8 @@ public class Enemy : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        player = FindObjectOfType<PlayerMovement>().transform;
+
     }
 
     public void TakeDamage(int damage)
@@ -47,5 +50,7 @@ public class Enemy : MonoBehaviour
         Instantiate(bloodEffect, transform.position, Quaternion.identity);
         health -= damage;
         Debug.Log("EMOTIONAL DAMAGE!!! TAKEN");
+        transform.position = Vector2.MoveTowards(transform.position, player.transform.position, enemyData.MoveSpeed * Time.deltaTime);    //Constantly move the enemy towards the player
+
     }
 }

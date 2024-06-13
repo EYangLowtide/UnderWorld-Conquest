@@ -5,8 +5,8 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     public EnemyScriptableObject enemyData;
+    public Vector2 moveDir;  // Add this line
     Transform player;
-
 
     void Start()
     {
@@ -15,6 +15,8 @@ public class EnemyMovement : MonoBehaviour
 
     void Update()
     {
-        transform.position = Vector2.MoveTowards(transform.position, player.transform.position, enemyData.MoveSpeed * Time.deltaTime);    //Constantly move the enemy towards the player
+        Vector2 newPosition = Vector2.MoveTowards(transform.position, player.transform.position, enemyData.MoveSpeed * Time.deltaTime);
+        moveDir = newPosition - (Vector2)transform.position;  // Update the moveDir
+        transform.position = newPosition;  // Move the enemy towards the player
     }
 }

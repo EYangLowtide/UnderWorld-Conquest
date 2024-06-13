@@ -6,9 +6,24 @@ using UnityEngine;
 
 public class PorjectileWeaponBehavior : MonoBehaviour
 {
+    public WeaponScriptableObject weaponData;
+
     protected Vector3 direction;
     public float destroyAfterSeconds;
 
+    //current stats
+    protected float currentDamage;
+    protected float currentSpeed;
+    protected float currentCoolDownduration;
+    protected int currentPierce;
+
+    void Awake()
+    {
+        currentDamage = weaponData.Damage;
+        currentSpeed = weaponData.Speed;
+        currentCoolDownduration = weaponData.CooldownDuration;
+        currentPierce = weaponData.Pierce;
+    }
 
     // Start is called before the first frame update
     protected virtual void Start()
@@ -63,5 +78,14 @@ public class PorjectileWeaponBehavior : MonoBehaviour
 
         transform.localScale = scale;
         transform.rotation = Quaternion.Euler(rotation); 
+    }
+
+    protected virtual void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.CompareTag("Enemy"))
+        {
+            EnemyStats enemy = col.GetComponent<EnemyStats>();
+            enemy.TakeDamage(currentDamage); //use current dmg instead of weaponData.damage for future ref
+        }
     }
 }
