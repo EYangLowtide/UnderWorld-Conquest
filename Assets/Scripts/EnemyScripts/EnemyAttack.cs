@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EnemyAttack : MonoBehaviour
 {
+    public UnityEvent<Vector2> OnMovementInput;
     private float timeBtwAttack;
     public float startTimeBtwAttack;
-
+    private Transform player;
     public Transform attackPos;
     public LayerMask whatIsPlayer;
     public float attackRange;
@@ -16,34 +18,14 @@ public class EnemyAttack : MonoBehaviour
 
     private void Update()
     {
-        if (timeBtwAttack <= 0)
+        if (player != null)
+            return;
+        float distance = Vector2.Distance(player.position, transform.position);
+        if (distance <= attackRange)
         {
-            if (PlayerInAttackRange())
-            {
-                anim.SetTrigger("EnemyAttack");
-                /*
-                Collider2D[] playersToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatIsPlayer);
-                foreach (Collider2D player in playersToDamage)
-                {
-                    if (player != null)
-                    {
-                        player.GetComponent<player>().TakeDamage(damage);
-                    }
-                }
-                */
-                timeBtwAttack = startTimeBtwAttack;
-            }
+            OnMovementInput?.Invoke(Vector2.zero);
+            anim.SetTrigger("EnemyAttack");
         }
-        else
-        {
-            timeBtwAttack -= Time.deltaTime;
-        }
-    }
-
-    bool PlayerInAttackRange()
-    {
-        Collider2D player = Physics2D.OverlapCircle(attackPos.position, attackRange, whatIsPlayer);
-        return player != null;
     }
 
     void OnDrawGizmosSelected()

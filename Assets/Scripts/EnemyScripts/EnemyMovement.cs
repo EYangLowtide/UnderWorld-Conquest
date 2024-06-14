@@ -18,5 +18,6 @@ public class EnemyMovement : MonoBehaviour
         Vector2 newPosition = Vector2.MoveTowards(transform.position, player.transform.position, enemyData.MoveSpeed * Time.deltaTime);
         moveDir = newPosition - (Vector2)transform.position;  // Update the moveDir
         transform.position = newPosition;  // Move the enemy towards the player
+
     }
 }
