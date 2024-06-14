@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     public float moveSpeed;
     public float dazedTime;
     public float startdDazingTime;
+    int currentEnemyHealth;
 
     private Animator anim;
     public GameObject bloodEffect;
@@ -17,6 +18,7 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        currentEnemyHealth = health;
         player = FindObjectOfType<PlayerMovement>().transform;
         anim = GetComponent<Animator>();
         anim.SetBool("isRunning", true);
@@ -45,12 +47,23 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        dazedTime = startdDazingTime; 
+        dazedTime = startdDazingTime;
+        anim.SetTrigger("EnemyHurt");
         //play hurt sound
-        Instantiate(bloodEffect, transform.position, Quaternion.identity);
-        health -= damage;
+        //Instantiate(bloodEffect, transform.position, Quaternion.identity);
+        currentEnemyHealth -= damage;
         Debug.Log("EMOTIONAL DAMAGE!!! TAKEN");
         transform.position = Vector2.MoveTowards(transform.position, player.transform.position, enemyData.MoveSpeed * Time.deltaTime);    //Constantly move the enemy towards the player
 
+    }
+
+    public void Die()
+    {
+        Debug.Log("Enemy has been SLAIN!!!");
+
+        anim.SetBool("EnemyIsDead", true );
+
+        GetComponent<Collider2D>().enabled = false;
+        this.enabled = false;
     }
 }
