@@ -86,6 +86,16 @@ public class PorjectileWeaponBehavior : MonoBehaviour
         {
             EnemyStats enemy = col.GetComponent<EnemyStats>();
             enemy.TakeDamage(currentDamage); //use current dmg instead of weaponData.damage for future ref
+            ReducePierce();
+        }
+    }
+
+    void ReducePierce() //destroy throwable object when zero
+    {
+        currentPierce--;
+        if (currentPierce <= 0)
+        {
+            Destroy(gameObject);
         }
     }
 }

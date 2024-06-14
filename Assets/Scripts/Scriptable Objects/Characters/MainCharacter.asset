@@ -9,11 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8dcc9f7dfd768a344a2f5f24fa1905fe, type: 3}
-  m_Name: KnifeWeapon
+  m_Script: {fileID: 11500000, guid: 97a3c2682780ffa48b6cfd6a3a887dd1, type: 3}
+  m_Name: MainCharacter
   m_EditorClassIdentifier: 
-  prefab: {fileID: 6689678375744240909, guid: 34941ca8c3c2e7941bacaed8431f0e3d, type: 3}
-  damage: 5
-  speed: 10
-  cooldownDuration: 2
-  pierce: 1
+  startingWeapon: {fileID: 0}
+  maxHealth: 100
+  recovery: 10
+  moveSpeed: 5
+  strength: 10
+  projectileSpeed: 10
+  attackSpeed: 5
+  dashRange: 5

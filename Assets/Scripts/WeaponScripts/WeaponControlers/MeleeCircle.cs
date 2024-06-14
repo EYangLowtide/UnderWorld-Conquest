@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HealthPotion : WeaponControler
+public class MeleeCircle : WeaponControler
 {
     // Start is called before the first frame update
     protected override void Start()
@@ -14,8 +14,8 @@ public class HealthPotion : WeaponControler
     protected override void Update()
     {
         base.Attack();
-        GameObject spawnedHealth = Instantiate(weaponData.Prefab);
-        spawnedHealth.transform.position = transform.position; //assign same pos as this obj which is parented to player
-        spawnedHealth.transform.parent = transform; //spawn below player
+        GameObject spawnedMelee = Instantiate(weaponData.Prefab);
+        spawnedMelee.transform.position = transform.position; //assign same pos as this obj which is parented to player
+        spawnedMelee.transform.parent = transform; //spawn below player
     }
 }

@@ -12817,7 +12817,7 @@ MonoBehaviour:
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 128
-  attackRange: 0.52
+  attackRange: 0.89
   damage: 10
   anim: {fileID: 723850301}
 --- !u!1 &919157506
@@ -17455,8 +17455,8 @@ Transform:
   m_GameObject: {fileID: 1657149952}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.119, y: 0.053, z: 0.027647587}
-  m_LocalScale: {x: 0.34932163, y: 0.34932163, z: 0.34932163}
+  m_LocalPosition: {x: -0.022, y: -0.004, z: 0.027647587}
+  m_LocalScale: {x: 0.29992056, y: 0.29992056, z: 0.29992056}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1777874335}
@@ -17731,6 +17731,7 @@ GameObject:
   - component: {fileID: 1777874343}
   - component: {fileID: 1777874344}
   - component: {fileID: 1777874345}
+  - component: {fileID: 1777874346}
   m_Layer: 7
   m_Name: player
   m_TagString: Player
@@ -17863,16 +17864,16 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1777874333}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 16ea830c8beccf645ba065ff82c97b3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
   lastHorizontalVector: 0
   lastVerticalVector: 0
   moveDir: {x: 0, y: 0}
   lastMovedVector: {x: 0, y: 0}
+  playerData: {fileID: 11400000, guid: c7a02974bb6d6fa4582ff40830653ce0, type: 2}
 --- !u!114 &1777874342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17880,7 +17881,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1777874333}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5b5bc88ed5961c2458056bc3bccb58a7, type: 3}
   m_Name: 
@@ -17892,7 +17893,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1777874333}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0432099d9e43fba48b3cbdd97bedbbf8, type: 3}
   m_Name: 
@@ -17902,7 +17903,7 @@ MonoBehaviour:
   whatIsEnemy:
     serializedVersion: 2
     m_Bits: 128
-  attackRange: 0.65
+  attackRange: 2
   damage: 20
   anim: {fileID: 1777874337}
 --- !u!61 &1777874344
@@ -17957,11 +17958,24 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1777874333}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1428a1f89a8dc684ca2f20414dd04e43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1777874346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1777874333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fdf22099defc894283e9eab4c9ce7b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerData: {fileID: 11400000, guid: c7a02974bb6d6fa4582ff40830653ce0, type: 2}
 --- !u!1 &1868055997
 GameObject:
   m_ObjectHideFlags: 0
