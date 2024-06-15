@@ -5,7 +5,6 @@ using UnityEngine.Events;
 
 public class EnemyAttack : MonoBehaviour
 {
-    public UnityEvent<Vector2> OnMovementInput;
     private float timeBtwAttack;
     public float startTimeBtwAttack;
     private Transform player;
@@ -23,7 +22,6 @@ public class EnemyAttack : MonoBehaviour
         float distance = Vector2.Distance(player.position, transform.position);
         if (distance <= attackRange)
         {
-            OnMovementInput?.Invoke(Vector2.zero);
             anim.SetTrigger("EnemyAttack");
         }
     }
