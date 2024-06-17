@@ -216,7 +216,7 @@ GameObject:
   - component: {fileID: 4725474163054659384}
   m_Layer: 6
   m_Name: prob location 3
-  m_TagString: Untagged
+  m_TagString: Enviroment
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7838,7 +7838,7 @@ GameObject:
   - component: {fileID: 3516896884147874268}
   m_Layer: 6
   m_Name: Props
-  m_TagString: Untagged
+  m_TagString: Enviroment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7963,7 +7963,7 @@ GameObject:
   - component: {fileID: 4609244432392932424}
   m_Layer: 6
   m_Name: prob location 1
-  m_TagString: Untagged
+  m_TagString: Enviroment
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10574,7 +10574,7 @@ GameObject:
   - component: {fileID: 3894924484002729899}
   m_Layer: 6
   m_Name: prob location 2
-  m_TagString: Untagged
+  m_TagString: Enviroment
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

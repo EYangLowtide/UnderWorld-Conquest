@@ -19,17 +19,21 @@ public class PlayerMovement : MonoBehaviour
 
     private bool canDash = true;
     private bool isDashing;
+    private bool isCollidingWithEnvironment = false;
     private float dashingPower = 24f;
     private float dashingTime = 0.2f;
     private float dashingCooldown = 1f;
 
     [SerializeField] private TrailRenderer tr;
 
+    private Vector2 collisionNormal;
+
     // Start is called before the first frame update
     void Start()
     {
         rigBod = GetComponent<Rigidbody2D>();
         lastMovedVector = new Vector2(1, 0f); // Default last moved direction
+        rigBod.constraints = RigidbodyConstraints2D.FreezeRotation; // Prevent rotation due to physics interactions
     }
 
     // Update is called once per frame
@@ -54,7 +58,14 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
 
-        Move();
+        if (isCollidingWithEnvironment)
+        {
+            AdjustMoveDirection();
+        }
+        else
+        {
+            Move();
+        }
     }
 
     void InputManagement()
@@ -84,7 +95,34 @@ public class PlayerMovement : MonoBehaviour
 
     void Move()
     {
-        rigBod.velocity = new Vector2(moveDir.x * playerData.MoveSpeed, moveDir.y * playerData.MoveSpeed);
+        if (moveDir != Vector2.zero)
+        {
+            rigBod.velocity = new Vector2(moveDir.x * playerData.MoveSpeed, moveDir.y * playerData.MoveSpeed);
+        }
+        else
+        {
+            rigBod.velocity = Vector2.zero;
+        }
+    }
+
+    private void AdjustMoveDirection()
+    {
+        Vector2 adjustedMoveDir = moveDir;
+
+        // Prevent movement into the collision normal
+        if (Vector2.Dot(moveDir, collisionNormal) < 0)
+        {
+            if (Mathf.Abs(collisionNormal.x) > Mathf.Abs(collisionNormal.y))
+            {
+                adjustedMoveDir.x = 0;
+            }
+            else
+            {
+                adjustedMoveDir.y = 0;
+            }
+        }
+
+        rigBod.velocity = adjustedMoveDir * playerData.MoveSpeed; //Time.deltaTime;
     }
 
     private IEnumerator Dash()
@@ -97,8 +135,36 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(dashingTime);
         tr.emitting = false;
         isDashing = false;
-        rigBod.velocity = Vector2.zero;
+        rigBod.velocity = Vector2.zero; // Stop movement after dash
         yield return new WaitForSeconds(dashingCooldown);
         canDash = true;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enviroment")) //erase the 2nd n in environment
+        {
+            isCollidingWithEnvironment = true;
+            collisionNormal = (transform.position - collision.transform.position).normalized;//Time.deltaTime;
+            rigBod.velocity = Vector2.zero;
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enviroment"))
+        {
+            isCollidingWithEnvironment = true;
+            collisionNormal = (transform.position - collision.transform.position).normalized;//Time.deltaTime;
+            rigBod.velocity = Vector2.zero;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enviroment"))
+        {
+            isCollidingWithEnvironment = false;
+        }
     }
 }
