@@ -21,5 +21,14 @@ public class MeleeBehaviour : MeleeWeaponBehaviour
 
             markedEnemies.Add(col.gameObject);  //Mark the enemy
         }
+        else if (col.CompareTag("Props"))
+        {
+            if (col.gameObject.TryGetComponent(out BreakableProps breakable) && !markedEnemies.Contains(col.gameObject))
+            {
+                breakable.TakeDamage(currentDamage);
+
+                markedEnemies.Add(col.gameObject);
+            }
+        }
     }
 }

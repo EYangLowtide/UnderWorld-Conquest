@@ -51,12 +51,21 @@ public class EnemyAttack : MonoBehaviour
             if (player != null)
             {
                 Debug.Log("Player has been hit by enemy");
-                //player.GetComponent<PlayerStats>().TakeDamage(damage);
+                player.GetComponent<PlayerStats>().TakeDamage(damage);
             }
         }
 
         yield return new WaitForSeconds(0.1f); // Ensure the attack completes before resetting the bool
         anim.SetBool("EnemyAttack", false);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            PlayerStats player = collision.gameObject.GetComponent<PlayerStats>();
+            player.TakeDamage(damage);
+        }
     }
 
     void OnDrawGizmosSelected()

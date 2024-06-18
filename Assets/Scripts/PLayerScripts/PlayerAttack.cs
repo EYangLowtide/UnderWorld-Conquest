@@ -28,6 +28,7 @@ public class PlayerAttack : MonoBehaviour
                     {
                         enemy.GetComponent<Enemy>().TakeDamage(damage);
                     }
+
                 }
                 timeBtwAttack = startTimeBtwAttack;
             }
@@ -37,6 +38,18 @@ public class PlayerAttack : MonoBehaviour
             timeBtwAttack -= Time.deltaTime;
         }
     }
+
+    /*
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Enemy"))
+        {
+            anim.SetTrigger("MeleeAttack");
+            collision.GetComponent<Enemy>().TakeDamage(damage);
+            timeBtwAttack = startTimeBtwAttack;
+        }
+    }
+    */
 
     void OnDrawGizmosSelected()
     {

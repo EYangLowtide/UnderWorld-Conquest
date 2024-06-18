@@ -16,7 +16,7 @@ MonoBehaviour:
   maxHealth: 100
   recovery: 10
   moveSpeed: 10
-  strength: 10
+  strength: 50
   projectileSpeed: 10
-  attackSpeed: 5
+  attackSpeed: 10
   dashRange: 5
