@@ -14,15 +14,21 @@ public class PlayerMovement : MonoBehaviour
     public Vector2 lastMovedVector;
 
     public Rigidbody2D rigBod;
-    public PlayerScriptableObject playerData;
+    //public PlayerScriptableObject playerData;
     //public float moveSpeed;
+    PlayerStats player;
 
-    private bool canDash = true;
-    private bool isDashing;
-    private bool isCollidingWithEnvironment = false;
-    private float dashingPower = 24f;
-    private float dashingTime = 0.2f;
-    private float dashingCooldown = 1f;
+    public bool canDash = true;
+    public bool isDashing;
+    public bool isCollidingWithEnvironment = false;
+    public float dashingPower = 24f;
+    public float dashingTime = 0.2f;
+    public float dashingCooldown = 1f;
+
+    [Header("I-Frames")]
+    public float invincibliltyDuration;
+    public float invincibilityTimer;
+    public bool isInvincable;
 
     [SerializeField] private TrailRenderer tr;
 
@@ -31,6 +37,7 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        player = GetComponent<PlayerStats>();
         rigBod = GetComponent<Rigidbody2D>();
         lastMovedVector = new Vector2(1, 0f); // Default last moved direction
         rigBod.constraints = RigidbodyConstraints2D.FreezeRotation; // Prevent rotation due to physics interactions
@@ -41,6 +48,8 @@ public class PlayerMovement : MonoBehaviour
     {
         if (isDashing)
         {
+            invincibilityTimer = invincibliltyDuration;
+            isInvincable = true;
             return;
         }
         InputManagement();
@@ -55,6 +64,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (isDashing)
         {
+
             return;
         }
 
@@ -97,7 +107,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (moveDir != Vector2.zero)
         {
-            rigBod.velocity = new Vector2(moveDir.x * playerData.MoveSpeed, moveDir.y * playerData.MoveSpeed);
+            rigBod.velocity = new Vector2(moveDir.x * player.currentMoveSpeed, moveDir.y * player.currentMoveSpeed); //was playerData.MoveSpeed
         }
         else
         {
@@ -122,7 +132,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        rigBod.velocity = adjustedMoveDir * playerData.MoveSpeed; //Time.deltaTime;
+        rigBod.velocity = adjustedMoveDir * player.currentMoveSpeed; //Time.deltaTime; and was playerData
     }
 
     private IEnumerator Dash()

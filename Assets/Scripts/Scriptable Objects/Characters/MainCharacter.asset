@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97a3c2682780ffa48b6cfd6a3a887dd1, type: 3}
   m_Name: MainCharacter
   m_EditorClassIdentifier: 
-  startingWeapon: {fileID: 0}
-  maxHealth: 100
-  recovery: 10
+  startingWeapon: {fileID: 6388284079261138231, guid: 8a20d1ead0681dc4ebf21fb50c446222, type: 3}
+  maxHealth: 1000
+  recovery: 5
   moveSpeed: 10
   strength: 50
   projectileSpeed: 10
   attackSpeed: 10
   dashRange: 5
+  magnet: 0.7

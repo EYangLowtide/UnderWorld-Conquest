@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 8193120540410961992}
   - component: {fileID: 3338185652776636594}
   - component: {fileID: -3875391438242512319}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Zoomies
-  m_TagString: Untagged
+  m_TagString: Props
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

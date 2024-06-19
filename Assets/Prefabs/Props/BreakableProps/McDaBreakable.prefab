@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 2793860567896007069}
   - component: {fileID: 4296166998645527049}
   - component: {fileID: -4069188607942802044}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: McDaBreakable
-  m_TagString: Untagged
+  m_TagString: Props
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

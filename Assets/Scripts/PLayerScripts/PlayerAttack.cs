@@ -9,6 +9,7 @@ public class PlayerAttack : MonoBehaviour
 
     public Transform attackPos;
     public LayerMask whatIsEnemy;
+    public LayerMask whatIsProps;
     public float attackRange;
     public int damage;
 
@@ -22,14 +23,29 @@ public class PlayerAttack : MonoBehaviour
             {
                 anim.SetTrigger("MeleeAttack");
                 Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatIsEnemy);
+                Collider2D[] propsToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatIsProps);
+
                 foreach (Collider2D enemy in enemiesToDamage)
                 {
                     if (enemy != null)
                     {
-                        enemy.GetComponent<Enemy>().TakeDamage(damage);
+                        Debug.Log("Enemy has been hit by player");
+                        enemy.GetComponent<EnemyStats>().TakeDamage(damage);
                     }
-
                 }
+
+                foreach (Collider2D prop in propsToDamage)
+                {
+                    if (prop != null)
+                    {
+                        Debug.Log("Prop has been hit by player");
+                        if (prop.gameObject.TryGetComponent(out BreakableProps breakable))
+                        {
+                            breakable.TakeDamage(damage);
+                        }
+                    }
+                }
+
                 timeBtwAttack = startTimeBtwAttack;
             }
         }
@@ -39,7 +55,8 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
-    /*
+    /* 
+    The OnTriggerEnter2D method works but causes player to damage without key press
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Enemy"))

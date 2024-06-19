@@ -17,6 +17,6 @@ public class KnifeBehavior : PorjectileWeaponBehavior
     // Update is called once per frame
     void Update()
     {
-        transform.position += direction * weaponData.Speed * Time.deltaTime; //move of knife
+        transform.position += direction * currentSpeed * Time.deltaTime; //move of knife //weaponData.Speed
     }
 }

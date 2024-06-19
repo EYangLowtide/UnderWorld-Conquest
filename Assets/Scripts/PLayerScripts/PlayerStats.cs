@@ -1,27 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 using UnityEditor.U2D.Animation;
 using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
-    public PlayerScriptableObject playerData;
+    PlayerScriptableObject playerData;
 
-    float currentHealth;
-    float currentMoveSpeed;
-    float currentRecovery;
-    float currentStrength;
-    float currentProjectileSpeed;
-    float currentAttackSpeed;
-    float currentDashRange;
+    private Animator anim;
 
-    //experience and level up
+    [HideInInspector] public float currentHealth;
+    [HideInInspector] public float currentMoveSpeed;
+    [HideInInspector] public float currentRecovery;
+    [HideInInspector] public float currentStrength;
+    [HideInInspector] public float currentProjectileSpeed;
+    [HideInInspector] public float currentAttackSpeed;
+    [HideInInspector] public float currentDashRange;
+    [HideInInspector] public float currentMagnet;
+
+    //spawn weapons
+    public List<GameObject> spawnedWeapons;
+
+    // Experience and level up
     [Header("Experience/Level")]
     public int experience = 0;
     public int level = 1;
     public int experienceCap = 100;
 
-    //class for define level range and xp cap
     [System.Serializable]
     public class LevelRange
     {
@@ -30,16 +36,19 @@ public class PlayerStats : MonoBehaviour
         public int experienceCapIncrease;
     }
 
-    //I-Frames
     [Header("I-Frames")]
-    public float invincibliltyDuration;
-    float invincibilityTimer;
-    bool isInvincable;
+    public float invincibilityDuration;
+    public float invincibilityTimer;
+    public bool isInvincible;
 
     public List<LevelRange> levelsRanges;
 
     void Awake()
     {
+        playerData = CharacterSelecter.GetData();
+        CharacterSelecter.instance.DestroySingleton();
+
+        anim = GetComponent<Animator>();
         currentAttackSpeed = playerData.AttackSpeed;
         currentRecovery = playerData.Recovery;
         currentStrength = playerData.Strength;
@@ -47,46 +56,45 @@ public class PlayerStats : MonoBehaviour
         currentProjectileSpeed = playerData.ProjectileSpeed;
         currentDashRange = playerData.DashRange;
         currentHealth = playerData.MaxHealth;
+        currentMagnet = playerData.Magnet;
 
+        SpawnedWeapon(playerData.StartingWeapon);
     }
 
     void Start()
     {
-        //init the xp cap as first increase
+        // Init the XP cap as first increase
         experienceCap = levelsRanges[0].experienceCapIncrease;
     }
 
-    // Start is called before the first frame update
     void Update()
     {
-        if(invincibilityTimer > 0)
+        if (invincibilityTimer > 0)
         {
             invincibilityTimer -= Time.deltaTime;
         }
-        //is invincable time is 0 set invincablility to false
-        else if (isInvincable)
+        else if (isInvincible)
         {
-            isInvincable = false;
+            isInvincible = false;
         }
+
+        RegenerateHealth();
     }
 
     public void IncreaseExperience(int amount)
     {
         experience += amount;
-
         LevelUpChecker();
     }
 
     void LevelUpChecker()
     {
-        if(experience >= experienceCap)// increase lvl 
+        while (experience >= experienceCap) // Handle multiple level-ups in one go
         {
-            //lvl plyr up and deduct exp
             level++;
             experience -= experienceCap;
-            //experience += experienceCapIncrease;
             int experienceCapIncrease = 0;
-            foreach(LevelRange range in levelsRanges)
+            foreach (LevelRange range in levelsRanges)
             {
                 if (level >= range.startLevel && level <= range.endLevel)
                 {
@@ -96,18 +104,18 @@ public class PlayerStats : MonoBehaviour
             }
             experienceCap += experienceCapIncrease;
         }
-
     }
 
     public void TakeDamage(float dmg)
     {
-       //if player is not invincable take dmg then become invincable
-        if (!isInvincable)
+        // If player is not invincible, take damage then become invincible
+        if (!isInvincible)
         {
+            anim.SetTrigger("PlayerHurt");
             currentHealth -= dmg;
 
-            invincibilityTimer = invincibliltyDuration;
-            isInvincable = true;
+            invincibilityTimer = invincibilityDuration;
+            isInvincible = true;
 
             if (currentHealth <= 0)
             {
@@ -118,8 +126,39 @@ public class PlayerStats : MonoBehaviour
 
     public void Kill()
     {
-        //Destroy(gameObject);
-        Debug.Log("PLAYER HAS BEEN SLAIN!!!!!");
+        anim.SetBool("PlayerIsDead", true);
+        StartCoroutine(HandleDeath());
+    }
+
+    private IEnumerator HandleDeath()
+    {
+        // Wait for the death animation to play fully
+        yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
+
+        // Option 1: Destroy the GameObject
+        // Destroy(gameObject);
+
+        // Option 2: Fade out the GameObject
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        if (spriteRenderer != null)
+        {
+            float fadeDuration = 2f;
+            float fadeSpeed = 1f / fadeDuration;
+            Color color = spriteRenderer.color;
+
+            for (float t = 0; t < 1f; t += Time.deltaTime * fadeSpeed)
+            {
+                color.a = Mathf.Lerp(1f, 0f, t);
+                spriteRenderer.color = color;
+                yield return null;
+            }
+
+            color.a = 0f;
+            spriteRenderer.color = color;
+        }
+
+        // Destroy the GameObject after fading out
+        Destroy(gameObject);
     }
 
     public void RestoreHealth(float amount)
@@ -133,6 +172,27 @@ public class PlayerStats : MonoBehaviour
                 currentHealth = playerData.MaxHealth;
             }
         }
+    }
 
+    public void RegenerateHealth()
+    {
+        if (currentHealth < playerData.MaxHealth)
+        {
+            currentHealth += currentRecovery * Time.deltaTime;
+
+            // Make sure regen does not go over max health
+            if (currentHealth > playerData.MaxHealth)
+            {
+                currentHealth = playerData.MaxHealth;
+            }
+        }
+    }
+
+    public void SpawnedWeapon(GameObject weapon)
+    {
+        //starting  weapon spawn
+        GameObject spawnedWeapon = Instantiate(weapon, transform.position, Quaternion.identity);
+        spawnedWeapon.transform.SetParent(transform);
+        spawnedWeapons.Add(spawnedWeapon);
     }
 }

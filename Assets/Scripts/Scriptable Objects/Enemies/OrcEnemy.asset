@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bb769a02237dc84589e42528f22d950, type: 3}
   m_Name: OrcEnemy
   m_EditorClassIdentifier: 
-  moveSpeed: 2
+  moveSpeed: 5
   maxHealth: 150
   damage: 10

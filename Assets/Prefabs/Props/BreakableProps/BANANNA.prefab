@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 6019271380188225593}
   - component: {fileID: 446557410173152831}
   - component: {fileID: -4884120201847291010}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BANANNA
-  m_TagString: Untagged
+  m_TagString: Props
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

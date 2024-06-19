@@ -42,35 +42,23 @@ public class EnemyAttack : MonoBehaviour
 
     private IEnumerator PerformAttack()
     {
-        anim.SetBool("EnemyAttack", true);
+        anim.SetTrigger("EnemyAttack");
         yield return new WaitForSeconds(0.1f); // Short delay to ensure the animation starts
 
-        Collider2D[] playersToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatIsPlayer);
-        foreach (Collider2D player in playersToDamage)
+        Collider2D[] playersToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatIsPlayer); //waht is player is looking for layer not tag or sorting
+        foreach (Collider2D playerCollider in playersToDamage)
         {
-            if (player != null)
+            if (playerCollider != null)
             {
                 Debug.Log("Player has been hit by enemy");
-                player.GetComponent<PlayerStats>().TakeDamage(damage);
+                playerCollider.GetComponent<PlayerStats>().TakeDamage(damage);
             }
-        }
-
-        yield return new WaitForSeconds(0.1f); // Ensure the attack completes before resetting the bool
-        anim.SetBool("EnemyAttack", false);
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            PlayerStats player = collision.gameObject.GetComponent<PlayerStats>();
-            player.TakeDamage(damage);
         }
     }
 
     void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.red;
+        Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(attackPos.position, attackRange);
     }
 }

@@ -5,7 +5,8 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     private Rigidbody2D rb;
-    public EnemyScriptableObject enemyData;
+    EnemyStats enemy;
+    //public EnemyScriptableObject enemyData;
     public Vector2 moveDir;  // Direction of movement
     private Transform player;
     private bool isCollidingWithPlayer = false;
@@ -20,6 +21,7 @@ public class EnemyMovement : MonoBehaviour
 
     void Start()
     {
+        enemy = GetComponent<EnemyStats>();
         player = FindObjectOfType<PlayerMovement>().transform;
     }
 
@@ -41,7 +43,7 @@ public class EnemyMovement : MonoBehaviour
         {
             Vector2 targetPosition = player.transform.position;
             moveDir = (targetPosition - rb.position).normalized;
-            rb.MovePosition(rb.position + moveDir * enemyData.MoveSpeed * Time.deltaTime);
+            rb.MovePosition(rb.position + moveDir * enemy.currentMoveSpeed * Time.deltaTime);
         }
     }
 
@@ -62,7 +64,7 @@ public class EnemyMovement : MonoBehaviour
             }
         }
 
-        rb.velocity = adjustedMoveDir * enemyData.MoveSpeed;
+        rb.velocity = adjustedMoveDir * enemy.currentMoveSpeed;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

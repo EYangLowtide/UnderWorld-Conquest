@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 5582066163004769981}
   - component: {fileID: 4342776315835782981}
   - component: {fileID: -2080255857789406202}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Breakable3
-  m_TagString: Untagged
+  m_TagString: Props
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -160,4 +160,4 @@ MonoBehaviour:
   drops:
   - name: HealthPotion
     itemPrefab: {fileID: 5238141784824741219, guid: 35c482f58828a03478b941aaa904aa73, type: 3}
-    dropRate: 80
+    dropRate: 90

@@ -38,4 +38,7 @@ public class PlayerScriptableObject : ScriptableObject
     float dashRange;
     public float DashRange { get => dashRange; private set => dashRange = value; }
 
+    [SerializeField]
+    float magnet;
+    public float Magnet { get => magnet; private set => magnet = value; }
 }
