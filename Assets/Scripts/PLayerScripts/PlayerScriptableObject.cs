@@ -22,9 +22,13 @@ public class PlayerScriptableObject : ScriptableObject
     float moveSpeed;
     public float MoveSpeed { get => moveSpeed; private set => moveSpeed = value; }
 
-    [SerializeField]
+    [SerializeField]//projectile damage multiplyer
     float strength;
     public float Strength { get => strength; private set => strength = value; }
+
+    [SerializeField]//melee damage mulitplyer
+    float guts;
+    public float Guts { get => guts; private set => guts = value; }
 
     [SerializeField]
     float projectileSpeed;

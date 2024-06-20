@@ -25,6 +25,11 @@ public class PorjectileWeaponBehavior : MonoBehaviour
         currentPierce = weaponData.Pierce;
     }
 
+    public float GetCurrentDamage()
+    {
+        return currentDamage *= FindObjectOfType<PlayerStats>().currentStrength;
+    }
+
     // Start is called before the first frame update
     protected virtual void Start()
     {
@@ -85,14 +90,14 @@ public class PorjectileWeaponBehavior : MonoBehaviour
         if (col.CompareTag("Enemy"))
         {
             EnemyStats enemy = col.GetComponent<EnemyStats>();
-            enemy.TakeDamage(currentDamage); //use current dmg instead of weaponData.damage for future ref
+            enemy.TakeDamage(GetCurrentDamage()); //use current dmg instead of weaponData.damage for future ref
             ReducePierce();
         }
         else if (col.CompareTag("Props"))
         {
             if(col.gameObject.TryGetComponent(out BreakableProps breakable))
             {
-                breakable.TakeDamage(currentDamage);
+                breakable.TakeDamage(GetCurrentDamage());
                 ReducePierce();
             }
         }

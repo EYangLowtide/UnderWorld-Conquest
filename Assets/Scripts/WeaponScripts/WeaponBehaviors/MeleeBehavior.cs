@@ -17,7 +17,7 @@ public class MeleeBehaviour : MeleeWeaponBehaviour
         if (col.CompareTag("Enemy") && !markedEnemies.Contains(col.gameObject))
         {
             EnemyStats enemy = col.GetComponent<EnemyStats>();
-            enemy.TakeDamage(currentDamage);
+            enemy.TakeDamage(GetCurrentMeleeDamage());
 
             markedEnemies.Add(col.gameObject);  //Mark the enemy
         }
@@ -25,7 +25,7 @@ public class MeleeBehaviour : MeleeWeaponBehaviour
         {
             if (col.gameObject.TryGetComponent(out BreakableProps breakable) && !markedEnemies.Contains(col.gameObject))
             {
-                breakable.TakeDamage(currentDamage);
+                breakable.TakeDamage(GetCurrentMeleeDamage());
 
                 markedEnemies.Add(col.gameObject);
             }

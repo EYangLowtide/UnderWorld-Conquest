@@ -206,6 +206,7 @@ MonoBehaviour:
   currentMoveSpeed: 0
   currentHealth: 0
   currentDamage: 0
+  despawnDistance: 20
   dazedTime: 0.4
   startdDazingTime: 0
   bloodEffect: {fileID: 0}
@@ -251,7 +252,7 @@ MonoBehaviour:
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 256
-  attackRange: 1.3
+  attackRange: 1.5
   damage: 15
   anim: {fileID: 8652141149159069036}
 --- !u!50 &834534971877925958

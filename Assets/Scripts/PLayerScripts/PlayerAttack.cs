@@ -11,10 +11,14 @@ public class PlayerAttack : MonoBehaviour
     public LayerMask whatIsEnemy;
     public LayerMask whatIsProps;
     public float attackRange;
-    public int damage;
+    public float meleeDamage;
 
     public Animator anim;
 
+    public float GetCurrentMeleeDamage()
+    {
+        return meleeDamage *= FindObjectOfType<PlayerStats>().currentGuts;
+    }
     private void Update()
     {
         if (timeBtwAttack <= 0)
@@ -30,7 +34,7 @@ public class PlayerAttack : MonoBehaviour
                     if (enemy != null)
                     {
                         Debug.Log("Enemy has been hit by player");
-                        enemy.GetComponent<EnemyStats>().TakeDamage(damage);
+                        enemy.GetComponent<EnemyStats>().TakeDamage(GetCurrentMeleeDamage());
                     }
                 }
 
@@ -41,7 +45,7 @@ public class PlayerAttack : MonoBehaviour
                         Debug.Log("Prop has been hit by player");
                         if (prop.gameObject.TryGetComponent(out BreakableProps breakable))
                         {
-                            breakable.TakeDamage(damage);
+                            breakable.TakeDamage(GetCurrentMeleeDamage());
                         }
                     }
                 }

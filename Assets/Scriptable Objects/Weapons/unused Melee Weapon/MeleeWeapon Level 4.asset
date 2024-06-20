@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dcc9f7dfd768a344a2f5f24fa1905fe, type: 3}
+  m_Name: MeleeWeapon Level 4
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 2394584308817098860, guid: 9823151381fcbcc47bb8426a71f9d6e7, type: 3}
+  damage: 20
+  speed: 0
+  cooldownDuration: 1
+  pierce: 0
+  level: 4
+  nextLevelPrefab: {fileID: 2556827304065117541, guid: f74fc712d5c76e94b9e4165f42a00316, type: 3}
+  icon: {fileID: -908536432, guid: c7d1475501157874fb09943f4dddcaa2, type: 3}
