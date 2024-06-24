@@ -17,7 +17,7 @@ public class PlayerAttack : MonoBehaviour
 
     public float GetCurrentMeleeDamage()
     {
-        return meleeDamage *= FindObjectOfType<PlayerStats>().currentGuts;
+        return meleeDamage *= FindObjectOfType<PlayerStats>().CurrentGuts;
     }
     private void Update()
     {

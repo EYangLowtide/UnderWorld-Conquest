@@ -6,6 +6,6 @@ public class MeatPassiveItem : PassiveItems
 {
     protected override void ApplyModifier()
     {
-        player.currentGuts *= 1 + passiveItemData.Multiplier / 100f;
+        player.CurrentGuts *= 1 + passiveItemData.Multiplier / 100f;
     }
 }

@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97a3c2682780ffa48b6cfd6a3a887dd1, type: 3}
   m_Name: MainCharacter
   m_EditorClassIdentifier: 
+  icon: {fileID: 1163987129, guid: e6756fec9352c904d88f6d72cd2826f4, type: 3}
+  name: Every Man
   startingWeapon: {fileID: 6388284079261138231, guid: 8a20d1ead0681dc4ebf21fb50c446222, type: 3}
-  maxHealth: 1000
+  maxHealth: 10
   recovery: 10
   moveSpeed: 5
   strength: 10

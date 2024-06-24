@@ -6,6 +6,6 @@ public class SpinichPassiveItem : PassiveItems
 {
     protected override void ApplyModifier()
     {
-        player.currentStrength *= 1 + passiveItemData.Multiplier / 100f;
+        player.CurrentStrength *= 1 + passiveItemData.Multiplier / 100f;
     }
 }

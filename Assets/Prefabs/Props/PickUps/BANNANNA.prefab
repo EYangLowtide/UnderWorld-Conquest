@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 617550990399467081}
   - component: {fileID: 8501131182851731026}
   - component: {fileID: 2764499858883981368}
+  - component: {fileID: -6327789092605019146}
   m_Layer: 10
   m_Name: BANNANNA
   m_TagString: Untagged
@@ -171,3 +172,18 @@ PolygonCollider2D:
       - {x: 0.5074997, y: 0.2993517}
       - {x: 0.5108407, y: 0.4566365}
   m_UseDelaunayMesh: 0
+--- !u!114 &-6327789092605019146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2317304832083409898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2df1836a779159246867e0cd1655a90c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frequency: 3
+  magnitude: 0.2
+  direction: {x: 0, y: 1, z: 0}

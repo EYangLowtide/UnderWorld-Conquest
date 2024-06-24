@@ -46,6 +46,11 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameManager.instance.isGameOver)
+        {
+            return;
+        }
+
         if (isDashing)
         {
             invincibilityTimer = invincibliltyDuration;
@@ -59,6 +64,7 @@ public class PlayerMovement : MonoBehaviour
             StartCoroutine(Dash());
         }
     }
+
 
     private void FixedUpdate()
     {
@@ -80,6 +86,10 @@ public class PlayerMovement : MonoBehaviour
 
     void InputManagement()
     {
+        if(GameManager.instance.isGameOver)
+        {
+            return;
+        }
         float moveX = Input.GetAxisRaw("Horizontal");
         float moveY = Input.GetAxisRaw("Vertical");
 
@@ -105,9 +115,14 @@ public class PlayerMovement : MonoBehaviour
 
     void Move()
     {
+        if (GameManager.instance.isGameOver)
+        {
+            return;
+        }
+
         if (moveDir != Vector2.zero)
         {
-            rigBod.velocity = new Vector2(moveDir.x * player.currentMoveSpeed, moveDir.y * player.currentMoveSpeed); //was playerData.MoveSpeed
+            rigBod.velocity = new Vector2(moveDir.x * player.CurrentMoveSpeed, moveDir.y * player.CurrentMoveSpeed); //was playerData.MoveSpeed
         }
         else
         {
@@ -132,7 +147,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        rigBod.velocity = adjustedMoveDir * player.currentMoveSpeed; //Time.deltaTime; and was playerData
+        rigBod.velocity = adjustedMoveDir * player.CurrentMoveSpeed; //Time.deltaTime; and was playerData
     }
 
     private IEnumerator Dash()

@@ -27,7 +27,7 @@ public class PorjectileWeaponBehavior : MonoBehaviour
 
     public float GetCurrentDamage()
     {
-        return currentDamage *= FindObjectOfType<PlayerStats>().currentStrength;
+        return currentDamage *= FindObjectOfType<PlayerStats>().CurrentStrength;
     }
 
     // Start is called before the first frame update

@@ -4,58 +4,55 @@ using UnityEngine;
 
 public class PlayerCollector : MonoBehaviour
 {
-    PlayerStats player;
-    CircleCollider2D playerCollector;
+    private PlayerStats player;
+    private CircleCollider2D playerCollector;
     public float pullSpeed;
 
     private List<Rigidbody2D> itemsToPull = new List<Rigidbody2D>();
 
     void Start()
     {
-       
-        player = FindAnyObjectByType<PlayerStats>();
+        player = FindObjectOfType<PlayerStats>();
         playerCollector = GetComponent<CircleCollider2D>();
-        playerCollector.isTrigger = true; // Ensure the collider is set as a trigger
-          
-        
-
     }
 
     void Update()
     {
-        playerCollector.radius = player.currentMagnet;
+        UpdateCollectorRadius();
+        PullItemsTowardsPlayer();
+    }
 
-        // Apply a gradual force to each item towards the player
+    private void UpdateCollectorRadius()
+    {
+        playerCollector.radius = player.CurrentMagnet;
+    }
+
+    private void PullItemsTowardsPlayer()
+    {
         foreach (var rb in itemsToPull)
         {
             if (rb != null)
             {
                 Vector2 forceDirection = (transform.position - rb.transform.position).normalized;
-                rb.AddForce(forceDirection * pullSpeed * Time.deltaTime);
+                rb.AddForce(pullSpeed * Time.deltaTime * forceDirection);
             }
         }
-
-
     }
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        
         if (col.gameObject.TryGetComponent(out ICollectable collectable))
         {
-            // Adds items to the list for gradual pulling
-            Rigidbody2D rb = col.GetComponent<Rigidbody2D>();
-            if (rb != null && !itemsToPull.Contains(rb))
-            {
-                itemsToPull.Add(rb);
-            }
+            AddItemToPullList(col);
         }
-        /*//use stay2d for the one under
-        ICollectable collectable = col.GetComponent<ICollectable>();
-        if (collectable != null)
+    }
+
+    private void AddItemToPullList(Collider2D col)
+    {
+        Rigidbody2D rb = col.GetComponent<Rigidbody2D>();
+        if (rb != null && !itemsToPull.Contains(rb))
         {
-            collectable.Collect();
+            itemsToPull.Add(rb);
         }
-        */
     }
 }
