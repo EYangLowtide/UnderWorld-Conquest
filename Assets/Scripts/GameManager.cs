@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
     [Header("Screens")]
     public GameObject pauseScreen;
     public GameObject resultsScreen;
-    // public GameObject levelUpScreen;
+    public GameObject levelUpScreen;
 
     [Header("Current Stat Display")]
     public TMP_Text currentHealthDisplay;
@@ -53,6 +53,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] public TMP_Text stopwatchDisplay;
 
     public bool isGameOver = false;
+
+    public bool choosingUpgrade;
+
+    public GameObject playerObject;
 
     void Awake()
     {
@@ -89,6 +93,15 @@ public class GameManager : MonoBehaviour
                     Time.timeScale = 0f;
                     Debug.Log("GAME OVER");
                     DisplayResults();
+                }
+                break;
+            case GameState.LevelUp:
+                if (!choosingUpgrade)
+                {
+                    choosingUpgrade = true;
+                    Time.timeScale = 0f;
+                    Debug.Log("Show UPGRADE");
+                    levelUpScreen.SetActive(true);
                 }
                 break;
             default:
@@ -144,7 +157,7 @@ public class GameManager : MonoBehaviour
     {
         pauseScreen.SetActive(false);
         resultsScreen.SetActive(false);
-        // levelUpScreen.SetActive(false);
+        levelUpScreen.SetActive(false);
     }
 
     public void GameOver()
@@ -204,7 +217,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void UpdateStopWatch()
+    void UpdateStopWatch()
     {
         if (currentState == GameState.Gameplay)
         {
@@ -214,16 +227,30 @@ public class GameManager : MonoBehaviour
 
             if (stopwatchTime >= timeLimit)
             {
-                GameOver();
+                playerObject.SendMessage("Kill");
             }
         }
     }
 
-    private void UpdateStopWatchDisplay()
+    void UpdateStopWatchDisplay()
     {
         int minutes = Mathf.FloorToInt(stopwatchTime / 60);
         int seconds = Mathf.FloorToInt(stopwatchTime % 60);
         stopwatchDisplay.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+    }
+
+    public void StartLevelUp()
+    {
+        ChangeState(GameState.LevelUp);
+        playerObject.SendMessage("RemoveAndApplyUpgrades");
+    }
+
+    public void EndLevelUp()
+    {
+        choosingUpgrade = false;
+        Time.timeScale = 1f;
+        levelUpScreen.SetActive(false); // Hide the level-up screen
+        ChangeState(GameState.Gameplay);
     }
 
     public void ResetGame()
@@ -247,7 +274,7 @@ public class GameManager : MonoBehaviour
             currentStrengthDisplay.text = $"Strength: {playerStats.CurrentStrength}";
             currentGutsDisplay.text = $"Guts: {playerStats.CurrentGuts}";
             currentProjectileSpeedDisplay.text = $"Projectile Speed: {playerStats.CurrentProjectileSpeed}";
-            currentAttackSpeedDisplay.text = $"Attack Speed: {playerStats.CurrentAttackSpeed}";
+            //currentAttackSpeedDisplay.text = $"Attack Speed: {playerStats.CurrentAttackSpeed}";
             currentDashRangeDisplay.text = $"Dash Range: {playerStats.CurrentDashRange}";
             currentMagnetDisplay.text = $"Magnet Range: {playerStats.CurrentMagnet}";
         }

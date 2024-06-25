@@ -19,4 +19,7 @@ MonoBehaviour:
   pierce: 4
   level: 4
   nextLevelPrefab: {fileID: 6388284079261138231, guid: af9ca7c661d5a0444a4e3a78a0fd1700, type: 3}
+  name: Dragon's Wrath
+  description: A legendary sword imbued with the fiery essence of a dragon, delivering
+    devastating blows.
   icon: {fileID: 19358078, guid: 252ee84cece9aa644ad6dab422f0f55f, type: 3}

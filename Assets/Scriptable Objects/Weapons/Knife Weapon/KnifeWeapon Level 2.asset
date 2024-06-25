@@ -19,4 +19,7 @@ MonoBehaviour:
   pierce: 2
   level: 2
   nextLevelPrefab: {fileID: 6388284079261138231, guid: 8b237c529292c8f47a9e0b071a17e437, type: 3}
+  name: Silver Edge
+  description: A sharp and elegant sword with a gleaming silver blade, favored by
+    noble warriors.
   icon: {fileID: 1762764610, guid: 252ee84cece9aa644ad6dab422f0f55f, type: 3}

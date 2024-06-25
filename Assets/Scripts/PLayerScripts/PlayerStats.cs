@@ -161,12 +161,6 @@ public class PlayerStats : MonoBehaviour
 
     private void Awake()
     {
-        playerData = CharacterSelecter.GetData();
-        CharacterSelecter.instance.DestroySingleton();
-
-        inventory = GetComponent<InventoryManager>();
-        anim = GetComponent<Animator>();
-
         InitializeStats();
         SpawnInitialItems();
     }
@@ -192,8 +186,14 @@ public class PlayerStats : MonoBehaviour
         RegenerateHealth();
     }
 
-    private void InitializeStats()
+        public void InitializeStats()
     {
+        playerData = CharacterSelecter.GetData();
+        CharacterSelecter.instance.DestroySingleton();
+
+        inventory = GetComponent<InventoryManager>();
+        anim = GetComponent<Animator>();
+
         CurrentAttackSpeed = playerData.AttackSpeed;
         CurrentRecovery = playerData.Recovery;
         CurrentStrength = playerData.Strength;
@@ -248,6 +248,8 @@ public class PlayerStats : MonoBehaviour
                 }
             }
             experienceCap += experienceCapIncrease;
+
+            GameManager.instance.StartLevelUp();
         }
     }
 
@@ -374,4 +376,5 @@ public class PlayerStats : MonoBehaviour
         InitializeStats();
         UpdateAllUI();
     }
+
 }

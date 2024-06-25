@@ -15,8 +15,16 @@ public class ExperienceGem : PickUps, ICollectable
     {
         rb = GetComponent<Rigidbody2D>();
     }
-    public void Collect()
+    public override void Collect()
     {
+        if (hasBeenCollected)
+        {
+            return;
+        }
+        else
+        {
+            base.Collect();
+        }
         Debug.Log("Item Collected");
         PlayerStats player = FindObjectOfType<PlayerStats>();
         player.IncreaseExperience(experienceGranted);

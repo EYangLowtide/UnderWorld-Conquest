@@ -15,4 +15,6 @@ MonoBehaviour:
   multiplier: 35
   level: 4
   nextLevelPrefab: {fileID: 793100731433740071, guid: dd04e53447ec8d44fab63555e4220eb7, type: 3}
+  name: Bear
+  description: Gamey meat of the fearsome bear, believed to impart the beast's strength.
   icon: {fileID: 1271234695, guid: c885faa0bdfa2384ba1c2848f43bc790, type: 3}

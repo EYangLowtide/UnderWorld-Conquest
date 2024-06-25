@@ -15,4 +15,7 @@ MonoBehaviour:
   multiplier: 5
   level: 1
   nextLevelPrefab: {fileID: 5123860168342118132, guid: 7b9e0044739b7c54f89cd8569770e4b9, type: 3}
+  name: Carrot
+  description: The vibrant root of the earth, known for its crisp sweetness and the
+    vitality it brings to those who consume it.
   icon: {fileID: 586103808, guid: c885faa0bdfa2384ba1c2848f43bc790, type: 3}

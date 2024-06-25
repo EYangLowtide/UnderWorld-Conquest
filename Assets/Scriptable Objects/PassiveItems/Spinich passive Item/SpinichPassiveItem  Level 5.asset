@@ -15,4 +15,7 @@ MonoBehaviour:
   multiplier: 50
   level: 5
   nextLevelPrefab: {fileID: 0}
+  name: Asparagus
+  description: The elegant spear of spring, prized for its delicate flavor and the
+    renewal it symbolizes.
   icon: {fileID: 586103808, guid: c885faa0bdfa2384ba1c2848f43bc790, type: 3}

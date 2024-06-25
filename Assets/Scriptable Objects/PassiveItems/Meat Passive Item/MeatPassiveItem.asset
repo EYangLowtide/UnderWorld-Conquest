@@ -15,4 +15,7 @@ MonoBehaviour:
   multiplier: 5
   level: 1
   nextLevelPrefab: {fileID: 793100731433740071, guid: 5552be6212487cc429c29d25f43ab452, type: 3}
+  name: Pork
+  description: A flavorful and juicy meat, popular for its tenderness and used in
+    a wide range of cuisines.
   icon: {fileID: 1271234695, guid: c885faa0bdfa2384ba1c2848f43bc790, type: 3}

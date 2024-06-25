@@ -15,4 +15,6 @@ MonoBehaviour:
   multiplier: 20
   level: 3
   nextLevelPrefab: {fileID: 5276029692521870252, guid: 9b4ad61381e6a564db219a9bea9b2000, type: 3}
+  name: Angel Wings
+  description: Luminous wings of celestial beings, exuding divine grace and protection.
   icon: {fileID: -1373172483, guid: c7d1475501157874fb09943f4dddcaa2, type: 3}

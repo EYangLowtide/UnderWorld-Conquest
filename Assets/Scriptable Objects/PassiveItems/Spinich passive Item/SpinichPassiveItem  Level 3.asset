@@ -15,4 +15,7 @@ MonoBehaviour:
   multiplier: 20
   level: 3
   nextLevelPrefab: {fileID: 5123860168342118132, guid: 586ed2dbfe7464142ad16f331b188ae5, type: 3}
+  name: Tomato
+  description: "The ruby jewel of the vine, bursting with juiciness and the essence
+    of summer\u2019s warmth."
   icon: {fileID: 586103808, guid: c885faa0bdfa2384ba1c2848f43bc790, type: 3}

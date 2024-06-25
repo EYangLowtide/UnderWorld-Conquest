@@ -19,4 +19,7 @@ MonoBehaviour:
   pierce: 5
   level: 5
   nextLevelPrefab: {fileID: 0}
+  name: Eclipse of Eternity
+  description: An ancient and mythical sword that harnesses the power of darkness
+    and light, feared by all who face it.
   icon: {fileID: 1850564869, guid: ba20412a0096afd439f62c8c8bc3c87e, type: 3}

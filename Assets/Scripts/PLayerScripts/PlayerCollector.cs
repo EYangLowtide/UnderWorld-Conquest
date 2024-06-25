@@ -4,55 +4,54 @@ using UnityEngine;
 
 public class PlayerCollector : MonoBehaviour
 {
-    private PlayerStats player;
-    private CircleCollider2D playerCollector;
+    PlayerStats player;
+    CircleCollider2D playerCollector;
     public float pullSpeed;
 
     private List<Rigidbody2D> itemsToPull = new List<Rigidbody2D>();
 
     void Start()
     {
-        player = FindObjectOfType<PlayerStats>();
+        player = FindAnyObjectByType<PlayerStats>();
         playerCollector = GetComponent<CircleCollider2D>();
+        playerCollector.isTrigger = true; // Ensure the collider is set as a trigger
     }
 
     void Update()
     {
-        UpdateCollectorRadius();
-        PullItemsTowardsPlayer();
-    }
-
-    private void UpdateCollectorRadius()
-    {
         playerCollector.radius = player.CurrentMagnet;
-    }
 
-    private void PullItemsTowardsPlayer()
-    {
+        // Apply a gradual force to each item towards the player
         foreach (var rb in itemsToPull)
         {
             if (rb != null)
             {
                 Vector2 forceDirection = (transform.position - rb.transform.position).normalized;
-                rb.AddForce(pullSpeed * Time.deltaTime * forceDirection);
+                rb.AddForce(forceDirection * pullSpeed * Time.deltaTime);
             }
         }
+
+
     }
 
     void OnTriggerEnter2D(Collider2D col)
     {
+        
         if (col.gameObject.TryGetComponent(out ICollectable collectable))
         {
-            AddItemToPullList(col);
+            // Adds items to the list for gradual pulling
+            Rigidbody2D rb = col.GetComponent<Rigidbody2D>();
+            if (rb != null && !itemsToPull.Contains(rb))
+            {
+                itemsToPull.Add(rb);
+            }
         }
-    }
-
-    private void AddItemToPullList(Collider2D col)
-    {
-        Rigidbody2D rb = col.GetComponent<Rigidbody2D>();
-        if (rb != null && !itemsToPull.Contains(rb))
+        /*//use stay2d for the one under
+        ICollectable collectable = col.GetComponent<ICollectable>();
+        if (collectable != null)
         {
-            itemsToPull.Add(rb);
+            collectable.Collect();
         }
+        */
     }
 }

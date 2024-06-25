@@ -15,4 +15,7 @@ MonoBehaviour:
   multiplier: 10
   level: 2
   nextLevelPrefab: {fileID: 5276029692521870252, guid: b95473443c94ee74b88dced07961d31b, type: 3}
+  name: Griffin Wings
+  description: Mighty wings of the legendary griffin, combining the strength of a
+    lion and the freedom of an eagle.
   icon: {fileID: -681900886, guid: c7d1475501157874fb09943f4dddcaa2, type: 3}

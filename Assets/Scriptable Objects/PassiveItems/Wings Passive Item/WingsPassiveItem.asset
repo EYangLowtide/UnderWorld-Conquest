@@ -15,4 +15,7 @@ MonoBehaviour:
   multiplier: 5
   level: 1
   nextLevelPrefab: {fileID: 5276029692521870252, guid: 8bd2e63a0847b3b4e8dbcf9fc939ae88, type: 3}
+  name: Eagle Wings
+  description: Majestic wings of the sky sovereign, known for their unrivaled strength
+    and sharp vision.
   icon: {fileID: 1419941350, guid: c7d1475501157874fb09943f4dddcaa2, type: 3}

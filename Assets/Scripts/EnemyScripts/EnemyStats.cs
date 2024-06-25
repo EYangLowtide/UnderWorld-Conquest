@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
@@ -8,7 +7,6 @@ public class EnemyStats : MonoBehaviour
 {
     public EnemyScriptableObject enemyData;
 
-    //Current stats
     [HideInInspector]
     public float currentMoveSpeed;
     [HideInInspector]
@@ -17,33 +15,54 @@ public class EnemyStats : MonoBehaviour
     public float currentDamage;
 
     public float despawnDistance = 20f;
-
-
-    Transform player;
     public float dazedTime;
-    public float startdDazingTime;
-    //int currentEnemyHealth;
-
-    private Animator anim;
+    public float startDazingTime;
     public GameObject bloodEffect;
+
+    private Transform player;
+    private Animator anim;
+    private bool isDying = false;
 
     void Awake()
     {
         anim = GetComponent<Animator>();
-        //Assign the vaiables
-        currentMoveSpeed = enemyData.MoveSpeed;
-        currentHealth = enemyData.MaxHealth;
-        currentDamage = enemyData.Damage;
-        //currentEnemyHealth = health;
-        player = FindObjectOfType<PlayerMovement>().transform;
-        anim.SetBool("isRunning", true);
+        InitializeStats();
+        player = FindPlayer();
     }
+
     void Start()
     {
-        player = FindObjectOfType<PlayerStats>().transform;
+        player = FindPlayer();
     }
 
     void Update()
+    {
+        if (isDying) return;
+
+        HandleDazedTime();
+        CheckHealth();
+        CheckDespawnDistance();
+    }
+
+    private void InitializeStats()
+    {
+        currentMoveSpeed = enemyData.MoveSpeed;
+        currentHealth = enemyData.MaxHealth;
+        currentDamage = enemyData.Damage;
+        anim.SetBool("isRunning", true);
+    }
+
+    private Transform FindPlayer()
+    {
+        PlayerStats playerStats = FindObjectOfType<PlayerStats>();
+        if (playerStats != null)
+        {
+            return playerStats.transform;
+        }
+        return null;
+    }
+
+    private void HandleDazedTime()
     {
         if (dazedTime <= 0)
         {
@@ -54,52 +73,80 @@ public class EnemyStats : MonoBehaviour
             currentMoveSpeed = 0;
             dazedTime -= Time.deltaTime;
         }
+    }
 
+    private void CheckHealth()
+    {
         if (currentHealth <= 0)
         {
-            Destroy(gameObject);
+            Die();
         }
-        player = FindObjectOfType<PlayerMovement>().transform;
+    }
+
+    private void CheckDespawnDistance()
+    {
+        if (player == null) return;
 
         if (Vector2.Distance(transform.position, player.position) > despawnDistance)
         {
             ReturnEnemy();
         }
-
     }
 
     public void TakeDamage(float damage)
     {
-        dazedTime = startdDazingTime;
+        dazedTime = startDazingTime;
         anim.SetTrigger("EnemyHurt");
-        //play hurt sound
-        //Instantiate(bloodEffect, transform.position, Quaternion.identity);
-        //currentEnemyHealth -= damage;
         currentHealth -= damage;
         Debug.Log("EMOTIONAL DAMAGE!!! TAKEN");
-        transform.position = Vector2.MoveTowards(transform.position, player.transform.position, enemyData.MoveSpeed * Time.deltaTime);    //Constantly move the enemy towards the player
 
+        if (player != null)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, player.position, enemyData.MoveSpeed * Time.deltaTime);
+        }
     }
 
     public void Die()
     {
+        if (isDying) return;
+
+        isDying = true;
         Debug.Log("Enemy has been SLAIN!!!");
-
         anim.SetBool("EnemyIsDead", true);
-
         GetComponent<Collider2D>().enabled = false;
-        this.enabled = false;
+        StartCoroutine(HandleDeath());
+    }
+
+    private IEnumerator HandleDeath()
+    {
+        // Wait for the death animation to play fully
+        yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
+
+        // Optionally instantiate blood effect or other effects
+        if (bloodEffect != null)
+        {
+            Instantiate(bloodEffect, transform.position, Quaternion.identity);
+        }
+
+        // Destroy the GameObject
+        Destroy(gameObject);
     }
 
     private void OnDestroy()
     {
         EnemySpawner es = FindObjectOfType<EnemySpawner>();
-        es.OnEnemyKill();
+        if (es != null)
+        {
+            es.OnEnemyKill();
+        }
     }
 
-    void ReturnEnemy()
+    private void ReturnEnemy()
     {
         EnemySpawner es = FindObjectOfType<EnemySpawner>();
-        transform.position = player.position + es.relativeSpawnPoints[UnityEngine.Random.Range(0, es.relativeSpawnPoints.Count)].position;
+        if (es != null && player != null)
+        {
+            transform.position = player.position + es.relativeSpawnPoints[UnityEngine.Random.Range(0, es.relativeSpawnPoints.Count)].position;
+        }
     }
 }

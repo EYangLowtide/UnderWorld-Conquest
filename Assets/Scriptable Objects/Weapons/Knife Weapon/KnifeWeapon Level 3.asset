@@ -19,4 +19,7 @@ MonoBehaviour:
   pierce: 3
   level: 3
   nextLevelPrefab: {fileID: 6388284079261138231, guid: 47950143da1fd3b44bf607bc15bcce3c, type: 3}
+  name: Stormbringer
+  description: A mystical sword that crackles with the power of storms, capable of
+    summoning lightning.
   icon: {fileID: 720925125, guid: 252ee84cece9aa644ad6dab422f0f55f, type: 3}

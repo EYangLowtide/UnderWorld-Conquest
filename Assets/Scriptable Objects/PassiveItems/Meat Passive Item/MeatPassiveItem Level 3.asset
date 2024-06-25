@@ -15,4 +15,7 @@ MonoBehaviour:
   multiplier: 20
   level: 3
   nextLevelPrefab: {fileID: 793100731433740071, guid: 8bcc8557667d81e49b425130abd58418, type: 3}
+  name: Venison
+  description: A lean and exotic meat from deer, known for its rich flavor and often
+    featured in fine dining.
   icon: {fileID: 1271234695, guid: c885faa0bdfa2384ba1c2848f43bc790, type: 3}

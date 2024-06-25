@@ -15,4 +15,7 @@ MonoBehaviour:
   multiplier: 50
   level: 5
   nextLevelPrefab: {fileID: 0}
+  name: Dragon Wings
+  description: Powerful and awe-inspiring, these wings carry the might and fire of
+    ancient dragons.
   icon: {fileID: -1082252872, guid: c7d1475501157874fb09943f4dddcaa2, type: 3}

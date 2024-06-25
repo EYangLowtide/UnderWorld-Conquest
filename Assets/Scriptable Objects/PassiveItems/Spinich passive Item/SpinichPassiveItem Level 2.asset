@@ -15,4 +15,7 @@ MonoBehaviour:
   multiplier: 10
   level: 2
   nextLevelPrefab: {fileID: 5123860168342118132, guid: a1ded8e690a75e24ca673a1998238a3b, type: 3}
+  name: Broccoli
+  description: The emerald crown of the garden, celebrated for its robust flavor
+    and the strength it imparts.
   icon: {fileID: 586103808, guid: c885faa0bdfa2384ba1c2848f43bc790, type: 3}
