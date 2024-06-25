@@ -7,9 +7,9 @@ public class ExperienceGem : PickUps, ICollectable
     public int experienceGranted;
     Rigidbody2D rb;
 
-    bool hasTarget;
-    Vector3 targetPos;
-    float movSpd = 5f;
+    //bool hasTarget;
+    //Vector3 targetPos;
+    //float movSpd = 5f;
 
     private void Awake()
     {
@@ -30,8 +30,8 @@ public class ExperienceGem : PickUps, ICollectable
         player.IncreaseExperience(experienceGranted);
         //Destroy(gameObject);
     }
-
-    private void FixedUpdate()
+    /*
+   // private void FixedUpdate()
     {
         if (hasTarget)
         {
@@ -45,4 +45,5 @@ public class ExperienceGem : PickUps, ICollectable
         targetPos = position;
         hasTarget = true;
     }
+    */
 }

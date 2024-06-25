@@ -136,6 +136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   experienceGranted: 50
+  movSpd: 5
 --- !u!50 &1992846857895840139
 Rigidbody2D:
   serializedVersion: 4

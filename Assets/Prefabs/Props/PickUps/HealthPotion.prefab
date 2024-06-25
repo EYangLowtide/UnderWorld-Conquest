@@ -146,6 +146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthToRestore: 100
+  movSpd: 5
 --- !u!50 &-1671902375392516085
 Rigidbody2D:
   serializedVersion: 4

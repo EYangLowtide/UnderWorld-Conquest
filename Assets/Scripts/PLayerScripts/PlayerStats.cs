@@ -31,6 +31,7 @@ public class PlayerStats : MonoBehaviour
             {
                 currentHealth = value;
                 UpdateUI(GameManager.instance?.currentHealthDisplay, "Health: ", currentHealth);
+                UpdateHealthBar();
             }
         }
     }
@@ -193,9 +194,10 @@ public class PlayerStats : MonoBehaviour
         }
 
         RegenerateHealth();
+        UpdateHealthBar();
     }
 
-        public void InitializeStats()
+    public void InitializeStats()
     {
         playerData = CharacterSelecter.GetData();
         CharacterSelecter.instance.DestroySingleton();
@@ -346,6 +348,8 @@ public class PlayerStats : MonoBehaviour
             {
                 CurrentHealth = playerData.MaxHealth;
             }
+
+            UpdateHealthBar(); // Ensure the health bar is updated
         }
     }
 
@@ -359,6 +363,7 @@ public class PlayerStats : MonoBehaviour
             {
                 CurrentHealth = playerData.MaxHealth;
             }
+            UpdateHealthBar();
         }
     }
 
@@ -405,5 +410,4 @@ public class PlayerStats : MonoBehaviour
         InitializeStats();
         UpdateAllUI();
     }
-
 }

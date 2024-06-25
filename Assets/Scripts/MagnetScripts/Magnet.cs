@@ -8,12 +8,12 @@ public class Magnet : MonoBehaviour
     {
         if (collision.gameObject.TryGetComponent<ExperienceGem>(out ExperienceGem experienceGem))
         {
-            experienceGem.SetTarget(transform.parent.position);
+            return; //experienceGem.SetTarget(transform.parent.position);
         }
 
         if (collision.gameObject.TryGetComponent<HealthPotion>(out HealthPotion healthPotion))
         {
-            experienceGem.SetTarget(transform.parent.position);
+            return; // healthPotion.SetTarget(transform.parent.position);
         }
     }
 }

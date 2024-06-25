@@ -23,4 +23,4 @@ MonoBehaviour:
   projectileSpeed: 10
   attackSpeed: 10
   dashRange: 5
-  magnet: 0.7
+  magnet: 1.5
