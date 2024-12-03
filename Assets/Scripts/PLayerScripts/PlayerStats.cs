@@ -166,6 +166,13 @@ public class PlayerStats : MonoBehaviour
 
     public GameObject firstPassiveItemTest, secondPassiveItemTest, thirdPassiveItemTest;
 
+    [Header("Particle VFX")]
+    public ParticleSystem levelUpVFX;  // Particle effect for leveling up
+    public ParticleSystem damageVFX;  // Particle effect for taking damage
+
+    [Header("Level-Up Animation")]
+    public GameObject levelUpAnimationPrefab; // Prefab for level-up animation
+    public float levelUpAnimationDuration = 2f; // How long the animation lasts
     private void Awake()
     {
         InitializeStats();
@@ -263,7 +270,24 @@ public class PlayerStats : MonoBehaviour
 
             UpdateLevelText();
 
+            // Trigger level-up animation
+            PlayLevelUpAnimation();
+
             GameManager.instance.StartLevelUp();
+        }
+    }
+
+    private void PlayLevelUpAnimation()
+    {
+        if (levelUpAnimationPrefab != null)
+        {
+            // Instantiate the level-up animation prefab behind the player
+            GameObject animationInstance = Instantiate(levelUpAnimationPrefab, transform.position, Quaternion.identity);
+            animationInstance.transform.SetParent(transform, true); // Attach it to the player
+            animationInstance.transform.localPosition = new Vector3(0, 0, 4); // Offset behind the player
+
+            // Destroy the animation instance after its duration
+            Destroy(animationInstance, levelUpAnimationDuration);
         }
     }
 
@@ -286,6 +310,12 @@ public class PlayerStats : MonoBehaviour
 
             invincibilityTimer = invincibilityDuration;
             isInvincible = true;
+
+            // Play damage VFX
+            if (damageVFX != null)
+            {
+                damageVFX.Play();
+            }
 
             if (CurrentHealth <= 0)
             {

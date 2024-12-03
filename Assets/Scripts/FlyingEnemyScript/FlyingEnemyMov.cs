@@ -6,19 +6,18 @@ using SHG.AnimatorCoder;
 public class FlyingEnemyMov : AnimatorCoder
 {
     public static FlyingEnemyMov instance;
-    public Transform player;
+
+    public Transform player; // Reference to the player
     private Rigidbody2D rb;
     private SpriteRenderer sprite;
-    private EnemyStats enemy;
-    private Vector2 moveDir;
+    private EnemyStats enemy; // Reference to enemy stats
+    private Vector2 moveDir; // Movement direction
     private bool isCollidingWithPlayer = false;
     private bool isCollidingWithEnemy = false;
     private bool isCollidingWithEnvironment = false;
     private Vector2 collisionNormal;
 
-    public GameObject bullet;
-    private float shotCooldown;
-    public float StartShotCooldown;
+    public float stopDistance = 5f; // Distance to stop from the player
 
     private readonly AnimationData IDLE = new(Animations.IDLE);
     private readonly AnimationData ATTACK = new(Animations.ATTACK1, true, new());
@@ -32,11 +31,6 @@ public class FlyingEnemyMov : AnimatorCoder
         enemy = GetComponent<EnemyStats>();
     }
 
-    private void Start()
-    {
-        shotCooldown = StartShotCooldown;
-    }
-
     private void Update()
     {
         if (!isCollidingWithPlayer && !isCollidingWithEnemy && !isCollidingWithEnvironment)
@@ -48,7 +42,6 @@ public class FlyingEnemyMov : AnimatorCoder
             AdjustMoveDirection();
         }
 
-        HandleShooting();
         DefaultAnimation(0);
     }
 
@@ -62,8 +55,38 @@ public class FlyingEnemyMov : AnimatorCoder
         if (player != null)
         {
             Vector2 targetPosition = player.position;
-            moveDir = (targetPosition - rb.position).normalized;
-            rb.MovePosition(rb.position + moveDir * enemy.currentMoveSpeed * Time.deltaTime);
+            float distanceToPlayer = Vector2.Distance(rb.position, targetPosition);
+
+            // Stop moving if within the stopDistance
+            if (distanceToPlayer > stopDistance)
+            {
+                moveDir = (targetPosition - rb.position).normalized;
+
+                // Flip the sprite to face the player
+                FlipSpriteToFacePlayer(moveDir);
+
+                // Move towards the player without rotating
+                rb.MovePosition(rb.position + moveDir * enemy.currentMoveSpeed * Time.deltaTime);
+            }
+            else
+            {
+                // If within stopDistance, ensure the enemy faces the player but doesn't move
+                FlipSpriteToFacePlayer(targetPosition - rb.position);
+                rb.velocity = Vector2.zero; // Explicitly stop the enemy
+            }
+        }
+    }
+
+    private void FlipSpriteToFacePlayer(Vector2 direction)
+    {
+        // Flip the sprite based on the horizontal direction
+        if (direction.x > 0)
+        {
+            sprite.flipX = false; // Facing right
+        }
+        else
+        {
+            sprite.flipX = true; // Facing left
         }
     }
 
@@ -84,19 +107,6 @@ public class FlyingEnemyMov : AnimatorCoder
         }
 
         rb.velocity = adjustedMoveDir * enemy.currentMoveSpeed;
-    }
-
-    private void HandleShooting()
-    {
-        if (shotCooldown <= 0)
-        {
-            Instantiate(bullet, transform.position, transform.rotation);
-            shotCooldown = StartShotCooldown;
-        }
-        else
-        {
-            shotCooldown -= Time.deltaTime;
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

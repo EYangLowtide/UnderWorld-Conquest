@@ -15,10 +15,15 @@ public class PlayerAttack : MonoBehaviour
 
     public Animator anim;
 
+    [Header("Attack Sound")]
+    public AudioSource attackAudioSource; // Reference to the AudioSource
+    public AudioClip attackSound;        // Attack sound clip
+
     public float GetCurrentMeleeDamage()
     {
         return meleeDamage *= FindObjectOfType<PlayerStats>().CurrentGuts;
     }
+
     private void Update()
     {
         if (timeBtwAttack <= 0)
@@ -26,6 +31,10 @@ public class PlayerAttack : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 anim.SetTrigger("MeleeAttack");
+
+                // Play attack sound
+                PlayAttackSound();
+
                 Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatIsEnemy);
                 Collider2D[] propsToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatIsProps);
 
@@ -59,16 +68,28 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
+    private void PlayAttackSound()
+    {
+        if (attackAudioSource != null && attackSound != null)
+        {
+            attackAudioSource.PlayOneShot(attackSound); // Play the attack sound
+        }
+        else
+        {
+            Debug.LogWarning("Attack sound or AudioSource not assigned.");
+        }
+    }
+
     /* 
     The OnTriggerEnter2D method works but causes player to damage without key press
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Enemy"))
         {
-            anim.SetTrigger("MeleeAttack");
-            collision.GetComponent<Enemy>().TakeDamage(damage);
-            timeBtwAttack = startTimeBtwAttack;
-        }
+         anim.SetTrigger("MeleeAttack");
+         collision.GetComponent<Enemy>().TakeDamage(damage);
+         timeBtwAttack = startTimeBtwAttack;
+     }
     }
     */
 
