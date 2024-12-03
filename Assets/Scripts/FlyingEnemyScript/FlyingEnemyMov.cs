@@ -33,6 +33,8 @@ public class FlyingEnemyMov : AnimatorCoder
 
     private void Update()
     {
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+
         if (!isCollidingWithPlayer && !isCollidingWithEnemy && !isCollidingWithEnvironment)
         {
             MoveTowardsPlayer();

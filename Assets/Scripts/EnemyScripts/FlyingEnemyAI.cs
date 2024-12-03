@@ -16,6 +16,7 @@ public class FlyingEnemyAttack : MonoBehaviour
 
     private void Update()
     {
+        player = GameObject.FindGameObjectWithTag("Player").transform;
         if (player == null) return;
 
         HandleAttack();
