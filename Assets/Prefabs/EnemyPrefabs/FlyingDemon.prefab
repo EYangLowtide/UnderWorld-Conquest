@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 3567575814924138237}
   - component: {fileID: 2901742267226216685}
   - component: {fileID: -1596200841301983664}
-  - component: {fileID: -3229106311198877036}
   - component: {fileID: 8442320720492352785}
   - component: {fileID: -7169248034599583811}
   - component: {fileID: 5559713245374316149}
@@ -140,41 +139,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &-3229106311198877036
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5291582682593195718}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.5
 --- !u!114 &8442320720492352785
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -192,6 +156,8 @@ MonoBehaviour:
   bulletPrefab: {fileID: 6964088929477095139, guid: 4432633e2a88dc048a5a7c4aa9e062b8, type: 3}
   attackCooldown: 2
   bulletSpeed: 5
+  damageColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  flashDuration: 0.25
 --- !u!114 &-7169248034599583811
 MonoBehaviour:
   m_ObjectHideFlags: 0

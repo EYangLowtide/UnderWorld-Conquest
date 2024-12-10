@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4bb769a02237dc84589e42528f22d950, type: 3}
-  m_Name: FlyingDemon
+  m_Name: BlueDemon
   m_EditorClassIdentifier: 
   moveSpeed: 3
-  maxHealth: 100
+  maxHealth: 200
   damage: 17

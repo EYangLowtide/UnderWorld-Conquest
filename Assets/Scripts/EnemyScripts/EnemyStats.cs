@@ -1,6 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.Mathematics;
 using UnityEngine;
 
 public class EnemyStats : MonoBehaviour
@@ -23,11 +21,17 @@ public class EnemyStats : MonoBehaviour
     private Animator anim;
     private bool isDying = false;
 
+    // Reference to the FlyingEnemyAttack script
+    private FlyingEnemyAttack flyingEnemyAttack;
+
     void Awake()
     {
         anim = GetComponent<Animator>();
         InitializeStats();
         player = FindPlayer();
+
+        // Find the FlyingEnemyAttack script on this GameObject
+        flyingEnemyAttack = GetComponent<FlyingEnemyAttack>();
     }
 
     void Start()
@@ -98,7 +102,14 @@ public class EnemyStats : MonoBehaviour
         dazedTime = startDazingTime;
         anim.SetTrigger("EnemyHurt");
         currentHealth -= damage;
+
         Debug.Log("EMOTIONAL DAMAGE!!! TAKEN");
+
+        // Notify the FlyingEnemyAttack script to flash the damage color
+        if (flyingEnemyAttack != null)
+        {
+            flyingEnemyAttack.FlashDamage();
+        }
 
         if (player != null)
         {

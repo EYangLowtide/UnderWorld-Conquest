@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: RedOrc
   m_EditorClassIdentifier: 
   moveSpeed: 7
-  maxHealth: 200
+  maxHealth: 250
   damage: 15

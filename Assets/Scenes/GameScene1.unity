@@ -45326,6 +45326,14 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1777874335}
+    - target: {fileID: 7744030154457917037, guid: 9ca4ae1408fd13a488031f8f80f16b31, type: 3}
+      propertyPath: damageColor.b
+      value: 0.058490515
+      objectReference: {fileID: 0}
+    - target: {fileID: 7744030154457917037, guid: 9ca4ae1408fd13a488031f8f80f16b31, type: 3}
+      propertyPath: damageColor.g
+      value: 0.5713355
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
